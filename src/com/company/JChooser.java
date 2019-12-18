@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 public class JChooser extends JFrame {
 
     public JChooser() {
-        super("Тестовое окно");
+        super("Lingvist");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -30,7 +30,7 @@ public class JChooser extends JFrame {
 
         panel.add(Box.createRigidArea(new Dimension(10, 10)));
 
-        JButton button = new JButton("Показать JFileChooser");
+        JButton button = new JButton("Показать JChooser");
         button.setAlignmentX(CENTER_ALIGNMENT);
 
         button.addActionListener(new ActionListener() {
@@ -39,7 +39,7 @@ public class JChooser extends JFrame {
                 int ret = fileopen.showDialog(null, "Открыть файл");
                 if (ret == JFileChooser.APPROVE_OPTION) {
                     File file = fileopen.getSelectedFile();
-                    label.setText(file.getName());
+                    label.setText("/home/anna/IdeaProjects/GOST/61876-71t1.csv");
                 }
             }
         });

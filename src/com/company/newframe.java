@@ -8,12 +8,12 @@ public class newframe extends JFrame {
         newframe frameTabel = new newframe();
     }
 
-    JLabel welcome = new JLabel("Welcome to TranslitProject.net");
+    JLabel welcome = new JLabel("Welcome to LingvistInterface");
     JPanel panel = new JPanel();
 
     newframe() {
-        setSize(300, 500);
-        setLocation(500, 180);
+        setSize(3000, 300);
+        setLocation(500, 800);
         panel.setLayout(null);
 
         welcome.setBounds(70, 50, 150, 100);

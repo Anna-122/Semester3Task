@@ -4,10 +4,10 @@ import javax.swing.*;
 
 import java.awt.event.*;
 
-public class LoginExample extends JFrame {
+public class Login extends JFrame {
 
     public static void main(String[] args) {
-        LoginExample frame = new LoginExample();
+        Login frame = new Login();
     }
 
     JButton button = new JButton("Submit");
@@ -16,9 +16,9 @@ public class LoginExample extends JFrame {
     JPasswordField jPasswordField = new JPasswordField(15);
     JLabel label = new JLabel();
     JLabel label2 = new JLabel();
-    LoginExample() {
+    Login() {
 
-        super("Autentification");
+        super("Authentication");
         label.setText("Username:");
         label2.setText("Password:");
 
@@ -54,9 +54,10 @@ public class LoginExample extends JFrame {
                 String name = textField.getText();
                 String pwd = jPasswordField.getText();
                 if (name.equals("anna") && pwd.equals("anna")) {
-                    newframe regFace = new newframe();
-                    regFace.setVisible(true);
+//                    newframe regFace = new newframe();
+//                    LingvInterfice.setVisible(true);
                     dispose();
+                    LingvInterface.showLingvistForm();
                 } else {
 
                     JOptionPane.showMessageDialog(null,
