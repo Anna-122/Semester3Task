@@ -7,7 +7,7 @@ public class Lingvist {
     public static void main( String[] args ) {
         System.out.print("Добро пожаловать! Чтобы провести транслитерацию имен собсвенных  выбырете таблицу\n");
 
-        File myFile = new File("/home/anna/TranslitTables");
+        File myFile = new File("/home/anna/IdeaProjects/ГОСТ/");
         System.out.println("File name: " + myFile.getName());
         System.out.println("Parent folder: " + myFile.getParent());
         if(myFile.exists())
