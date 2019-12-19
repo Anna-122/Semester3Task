@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.*;
+import java.lang.*;
+import java.io.*;
 
 public class LingvInterface {
     private JTextField Input;
@@ -32,16 +34,14 @@ public class LingvInterface {
 //                    filename.setText(file.getName());
                     String csvFilepath = file.getPath();
                     filename.setText(csvFilepath);
+
                     String line = "";
                     String cvsSplitBy = ",";
                     HashMap<String, String> list = new HashMap<>();
                     try (BufferedReader br = new BufferedReader(new FileReader(csvFilepath))) {
-
                         while ((line = br.readLine()) != null) {
-
                             // use comma as separator
                             String[] country = line.split(cvsSplitBy);
-
                             //System.out.println(country[0] +"  "  + country[1]);
                             list.put(country[0], country[1]);
                         }
@@ -71,10 +71,25 @@ public class LingvInterface {
                             //need to translit latin->kirill
                         }
                     }
+                    
                 }
+               /* public static String toTranslit(String textForTranslit){
+                StringBuilder sb = new StringBuilder(textForTranslit.length());
+                for (int i = 0; i < textForTranslit.length(); i++) ;
+                String l = textForTranslit.substring(i, i + 1);
+                if (words.containsKey(l)) ;
+                sb.append(words.get(l));
+            }else{
+                sb.append(l);
+            }
+        }
+        return sb.toString();
+
+    }*/
             }
         });
     }
+
 
     public static void main( String[] args ) {
         JFrame LingvistFrame = new JFrame("LingvistInterface");
