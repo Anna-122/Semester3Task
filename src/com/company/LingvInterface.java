@@ -11,9 +11,10 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.*;
 import java.lang.*;
-import java.io.*;
 
 public class LingvInterface {
+    private static final Map<String, String> list = new HashMap<String, String>();
+
     private JTextField Input;
     private JButton ClickMe;
     private JPanel MyPanel;
@@ -34,6 +35,7 @@ public class LingvInterface {
 //                    filename.setText(file.getName());
                     String csvFilepath = file.getPath();
                     filename.setText(csvFilepath);
+
 
                     String line = "";
                     String cvsSplitBy = ",";
@@ -61,35 +63,42 @@ public class LingvInterface {
                     for (String sub1Text : words) {
                         if ((sub1Text).charAt(0) > 'А' && (sub1Text.charAt(0) < 'Я')) {
                             //need to translit kirill->latin
+
+                            StringBuilder sb = new StringBuilder(textForTranslit.length());
+                            for (int i = 0; i < textForTranslit.length(); i++) {
+                                String l = textForTranslit.substring(i, i + 1);
+                                if (list.containsKey(textForTranslit)) {
+                                    sb.append(list.get(textForTranslit));
+
+                                }
+                            }
+
+
                         }
                     }
-
                 } else {
                     charset.setText("Исходный набор символов: латиница");
                     for (String sub2Text : words) {
                         if ((sub2Text).charAt(0) > 'A' && (sub2Text.charAt(0) < 'Z')) {
                             //need to translit latin->kirill
+
+                            StringBuilder sc = new StringBuilder(textForTranslit.length());
+                            for (int i = 0; i < textForTranslit.length(); i++) {
+                                String l = textForTranslit.substring(i, i + 1);
+                                if (list.containsKey(textForTranslit)) {
+                                    sc.append(list.get(textForTranslit));
+
+                                } else {
+                                    sc.append(textForTranslit);
+                                }
+                            }
                         }
                     }
-                    
-                }
-               /* public static String toTranslit(String textForTranslit){
-                StringBuilder sb = new StringBuilder(textForTranslit.length());
-                for (int i = 0; i < textForTranslit.length(); i++) ;
-                String l = textForTranslit.substring(i, i + 1);
-                if (words.containsKey(l)) ;
-                sb.append(words.get(l));
-            }else{
-                sb.append(l);
-            }
-        }
-        return sb.toString();
 
-    }*/
+                }
             }
         });
     }
-
 
     public static void main( String[] args ) {
         JFrame LingvistFrame = new JFrame("LingvistInterface");
@@ -134,7 +143,7 @@ public class LingvInterface {
         Result.setText("Result");
         MyPanel.add(Result, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         Input = new JTextField();
-        Input.setText("Введите текст для транслитерации");
+        Input.setText("");
         MyPanel.add(Input, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, new Dimension(2, 2), new Dimension(200, 20), null, 0, false));
         charset = new JLabel();
         charset.setText("Исходный набор символов:");
@@ -151,5 +160,28 @@ public class LingvInterface {
     public JComponent $$$getRootComponent$$$() {
         return MyPanel;
     }
-
 }
+
+/**
+     * @noinspection ALL
+     */
+   /* public JComponent $$$getRootComponent$$$() {
+        return MyPanel;
+    }
+
+    public static String CombingWordsInSentence( String[] words ) {
+        String res;
+        String[] words1 = new String[];
+        for (int i = 0; i < words.length; i++) {
+
+            String result = words[i];
+
+            res = result+i;
+            break;
+        }
+
+
+        return res;
+    }
+
+}*/
