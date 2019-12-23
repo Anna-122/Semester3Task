@@ -1,4 +1,4 @@
-package com.company;
+package com.khpi;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,6 @@ import java.util.regex.*;
 import java.lang.*;
 
 public class LingvInterface {
-    private static final Map<String, String> list = new HashMap<String, String>();
 
     private JTextField Input;
     private JButton ClickMe;
@@ -67,8 +66,8 @@ public class LingvInterface {
                             StringBuilder sb = new StringBuilder(textForTranslit.length());
                             for (int i = 0; i < textForTranslit.length(); i++) {
                                 String l = textForTranslit.substring(i, i + 1);
-                                if (list.containsKey(textForTranslit)) {
-                                    sb.append(list.get(textForTranslit));
+                                if (CSVtoMap.TranslitTableCyrLatin.containsKey(textForTranslit)) {
+                                    sb.append(CSVtoMap.TranslitTableCyrLatin.get(textForTranslit));
 
                                 }
                             }
@@ -85,8 +84,8 @@ public class LingvInterface {
                             StringBuilder sc = new StringBuilder(textForTranslit.length());
                             for (int i = 0; i < textForTranslit.length(); i++) {
                                 String l = textForTranslit.substring(i, i + 1);
-                                if (list.containsKey(textForTranslit)) {
-                                    sc.append(list.get(textForTranslit));
+                                if (CSVtoMap.TranslitTableLatinCyr.containsKey(textForTranslit)) {
+                                    sc.append(CSVtoMap.TranslitTableLatinCyr.get(textForTranslit));
 
                                 } else {
                                     sc.append(textForTranslit);
@@ -143,7 +142,7 @@ public class LingvInterface {
         Result.setText("Result");
         MyPanel.add(Result, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         Input = new JTextField();
-        Input.setText("");
+        Input.setText("Введите текст для транслитерации");
         MyPanel.add(Input, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, new Dimension(2, 2), new Dimension(200, 20), null, 0, false));
         charset = new JLabel();
         charset.setText("Исходный набор символов:");
@@ -160,6 +159,7 @@ public class LingvInterface {
     public JComponent $$$getRootComponent$$$() {
         return MyPanel;
     }
+
 }
 
 /**

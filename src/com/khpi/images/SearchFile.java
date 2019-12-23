@@ -1,4 +1,4 @@
-package com.company.images;
+package com.khpi.images;
 
 import javax.swing.*;
 import java.awt.*;

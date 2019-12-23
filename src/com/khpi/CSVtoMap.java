@@ -15,8 +15,12 @@ public class CSVtoMap {
     public static HashMap<String, String> TranslitTableLatinCyr = new HashMap<>();
     public static HashMap<String, String> TranslitTableCyrLatin = new HashMap<>();
 
+   // public static HashSet<String> TranslitTableLatinCyr = new HashSet<String>();
+   // public static HashSet<String>  TranslitTableCyrLatin = new HashSet<String>();
+
+
     public static void main( String[] args ) throws Exception {
-        String srcText = "my name Anet Goncharova from Kharkov city";
+        String srcText = "my name Anna Goncharova from Kharkov city";
 //        String srcText = "меня зовут Анна Гончарова и я из города Харьков";
 
         String line = "";
@@ -25,12 +29,18 @@ public class CSVtoMap {
             while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] trans = line.split(cvsSplitBy);
-                System.out.println(trans[0] + "  " + trans[1]);
+//                System.out.println(trans[0] + "  " + trans[1]);
                 TranslitTableLatinCyr.put(trans[0], trans[1]);
                 TranslitTableCyrLatin.put(trans[1], trans[0]);
             }
+        //    TranslitTableLatinCyr.put("test", "ключ заработал");
 
-//            printValues(TranslitTableLatinCyr);
+            System.out.println("Table: TranslitTableLatinCyr");
+            printValues(TranslitTableLatinCyr);
+            System.out.println();
+            System.out.println("Table: TranslitTableCyrLatin");
+            printValues(TranslitTableCyrLatin);
+
             Translit(srcText);
         }
     }
@@ -96,9 +106,13 @@ public class CSVtoMap {
 
         public static String TranslinFromLatToCyr( String word ) {
             StringBuilder sb = new StringBuilder(word.length());
+//            boolean f = TranslitTableLatinCyr.containsKey("G");
+            boolean f;
             for (int i = 0; i<word.length(); i++) {
                 String l = word.substring(i, i+1);
-                if (TranslitTableLatinCyr.containsKey(l)) {
+//                if (TranslitTableLatinCyr.containsKey(l)) {
+                f = TranslitTableLatinCyr.containsKey(l);
+                if (f) {
                     sb.append(TranslitTableLatinCyr.get(l));
             }
                 else {

@@ -1,4 +1,4 @@
-package com.company;
+package com.khpi;
 
 import javax.swing.*;
 

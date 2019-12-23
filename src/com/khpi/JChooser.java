@@ -1,4 +1,4 @@
-package com.company;
+package com.khpi;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
